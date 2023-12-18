@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Arena</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("/images/bka.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: #ffffff; /* White text */
+    }
+
+    form {
+      width: 40%;
+      margin: auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .search-form {
+      margin-bottom: 20px;
+    }
+
+    .search-results {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>Edit Arena</h1>
+<!-- Edit Form -->
+<form method="post" th:action="@{/update/{id}(id=${viewClient.id})}">
+  <input type="hidden" th:field="${viewClient.id}"/>
+  <label>Client Name:</label>
+  <input type="text" th:field="${viewClient.clientName}"/><br/>
+  <label>Phone Number:</label>
+  <input type="text" th:field="${viewClient.phoneNumber}"/><br/>
+  <label>Email:</label>
+  <input type="text" th:field="${viewClient.email}"/><br/>
+  <label>Ticket Class:</label>
+  <input type="text" th:field="${viewClient.ticketclass}"/><br/>
+  <button type="submit">Update</button>
+</form>
+
+</body>
+</html>

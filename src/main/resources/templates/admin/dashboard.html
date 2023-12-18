@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Dashboard</title>
+    <style>
+        body {
+            background-image: url("/images/bka.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .dashboard-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dashboard-links a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>Welcome to Admin Dashboard</h2>
+<p>Logged as: <span sec:authentication="name"></span></p>
+<p>Has role: <span sec:authentication="authorities"></span></p>
+
+<!-- Define the variable 'bar' for links -->
+<th:block th:with="bar='your_value'"></th:block>
+
+<div class="dashboard-links">
+    <!-- Use Thymeleaf expressions to reference the 'bar' variable in link URLs -->
+    <p><a th:href="@{/}" th:attr="href=@{'/home/' + ${bar}}" class="dashboard-link">Home</a></p>
+    <p><a th:href="@{/logout}" th:attr="href=@{'/logout/' + ${bar}}" class="dashboard-link">Log out</a></p>
+    <p><a th:href="@{/view}" th:attr="href=@{'/view/' + ${bar}}" class="dashboard-link">View Clients</a></p>
+</div>
+</body>
+</html>
